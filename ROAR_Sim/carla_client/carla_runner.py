@@ -144,7 +144,7 @@ class CarlaRunner:
             self.logger.debug("Initiating game")
             self.agent.start_module_threads()
             clock = pygame.time.Clock()
-            self.start_simulation_time = self.world.hud.simulation_time
+            self.start_simulation_time = self.world.carla_world.get_snapshot().elapsed_seconds
             self.start_real_time = time.time()
             self.start_vehicle_position = self.agent.vehicle.transform.location.to_array()
 
@@ -242,7 +242,7 @@ class CarlaRunner:
         else:
             self.end_vehicle_position = self.start_vehicle_position
         if self.world is not None:
-            self.end_simulation_time = self.world.hud.simulation_time
+            self.end_simulation_time = self.world.carla_world.get_snapshot().elapsed_seconds
             self.end_real_time = time.time()
             self.world.destroy()
             self.logger.debug("All actors are destroyed")
