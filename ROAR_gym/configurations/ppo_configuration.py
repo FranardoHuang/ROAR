@@ -10,8 +10,8 @@ sys.path.append(Path(os.getcwd()).parent.as_posix())
 misc_params = {
   "env_name": 'roar-e2e-ppo-v0',
   "run_fps": 8,  # TODO Link to the environment RUN_FPS
-  "model_directory": Path("./output/PPOe2e_Major_FC_Run_1"),
-  "run_name": "Major FC Run 1",
+  "model_directory": Path("./output/PPOe2e_Major_FC_Run_8"),
+  "run_name": "Major FC Run 8 -- full throttle",
   "total_timesteps": int(1e6),
 }
 
@@ -44,7 +44,7 @@ wandb_saves = {
 }
 
 PPO_params = dict(
-  learning_rate=0.0001,  # be smaller 2.5e-4
+  learning_rate=0.00001,  # be smaller 2.5e-4
   n_steps=1024 * misc_params["run_fps"],
   batch_size=64,  # mini_batch_size = 256?
   # n_epochs=10,
