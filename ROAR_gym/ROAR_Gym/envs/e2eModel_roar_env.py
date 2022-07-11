@@ -131,7 +131,7 @@ class ROARppoEnvE2E(ROAREnv):
             action = action.reshape((-1))
             check = (action[i*3+0]+0.5)/2+1
             if check > 0.5:
-                throttle = 0.7
+                throttle = 1.0
                 braking = 0
             else:
                 throttle = 0
@@ -241,7 +241,6 @@ class ROARppoEnvE2E(ROAREnv):
         if self.crash_check:
             print("no reward")
             return 0
-
 
         if self.agent.cross_reward > self.prev_cross_reward:
             reward += (self.agent.cross_reward - self.prev_cross_reward)*self.agent.interval*self.time_to_waypoint_ratio
